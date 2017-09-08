@@ -30,9 +30,7 @@ server.register([
       'options': options
   }], (err) => {
 
-    server.register([require('../routes/url.js')], err => {
-      console.log(err);
-    });
+    server.register([require('../routes/url.js')]);
 
     server.start( (err) => {
       if (err) {

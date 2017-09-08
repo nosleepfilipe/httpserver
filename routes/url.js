@@ -1,11 +1,16 @@
 'use strict';
 
 const url_schema = require('../schema/url.js');
-
+const QueueManager = require('QueueManager');
+const config = require('../config/config.js').config;
+const queue = new QueueManager(config);
 
 const insertUrl = (request, reply) => {
 
-  console.log(request.payload);
+  if(request.payload.url) {
+
+    queue.push('urlSchema',{url:request.payload.url});
+  }
 };
 
 
